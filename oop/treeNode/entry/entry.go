@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"learngo/oop/treeNode"
+	"learn-go/oop/treeNode"
 )
 
 type myTreeNode struct {
@@ -28,7 +28,19 @@ func main() {
 	root.Right = &treeNode.Node{Value: 5}
 	root.Right.Left = new(treeNode.Node)
 	root.Left.Right = &treeNode.Node{Value: 2}
+
 	root.Traverse()
+	println()
+
+	root.TraverseThroughFunctional()
+	println()
+
+	nodeCount := 0
+	root.TraverseFunc(func(node *treeNode.Node) {
+		nodeCount++
+	})
+	fmt.Println(nodeCount)
+	println()
 
 	node := myTreeNode{&root}
 	node.postOrder()
@@ -45,7 +57,7 @@ func main() {
 	proot.SetValue(100)
 	proot.Print()
 
-	var proot1 *treeNode.Node
+	var proot1 treeNode.Node
 	proot1.SetValue(100)
 	proot1.Print()
 
