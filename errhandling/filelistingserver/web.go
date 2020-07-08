@@ -16,7 +16,6 @@ type UserError interface {
 
 func errWrapper(handler appHandler) func(http.ResponseWriter, *http.Request) {
 	return func(writer http.ResponseWriter, request *http.Request) {
-
 		defer func() {
 			if r := recover(); r != nil {
 				log.Printf("Panic: %v", r)
