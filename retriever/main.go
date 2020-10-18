@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"learn-go/retriever/mock"
-	real2 "learn-go/retriever/real"
+	mock2 "ruo-xi/learn-go/retriever/mock"
+	real3 "ruo-xi/learn-go/retriever/real"
 	"time"
 )
 
@@ -44,11 +44,11 @@ func session(s RetrieverPoster) string {
 
 func main() {
 	var r Retriever
-	retriever := mock.Retriever{Content: "this is a fake imooc.com"}
+	retriever := mock2.Retriever{Content: "this is a fake imooc.com"}
 	r = &retriever
 	inspect(r)
 
-	r = &real2.Retriever{
+	r = &real3.Retriever{
 		UserAgent: "Mozilla/5.0",
 		TimeOut:   time.Minute,
 	}
@@ -57,7 +57,7 @@ func main() {
 	//type assertion
 	//realRetriever := r.(*real2.Retriever)
 	//fmt.Println(realRetriever.TimeOut)
-	if mockRetirever, ok := r.(*mock.Retriever); ok {
+	if mockRetirever, ok := r.(*mock2.Retriever); ok {
 		fmt.Println(mockRetirever.Content)
 	} else {
 		fmt.Println("ERROR")
@@ -72,9 +72,9 @@ func inspect(r Retriever) {
 	fmt.Println("Inspecting", r)
 	fmt.Printf(">%T     %v\n", r, r)
 	switch v := r.(type) {
-	case *mock.Retriever:
+	case *mock2.Retriever:
 		fmt.Println(">Contents", v.Content)
-	case *real2.Retriever:
+	case *real3.Retriever:
 		fmt.Println(">UserAgent:", v.UserAgent)
 	}
 	println()

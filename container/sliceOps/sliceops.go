@@ -7,7 +7,6 @@ func main() {
 	for i := 0; i < 100; i++ {
 		s = append(s, 2*i+1)
 		printSlice(s)
-
 	}
 	fmt.Println(s)
 
@@ -23,7 +22,9 @@ func main() {
 	printSlice(s2)
 
 	//s2[:3] + s2[4:]
+	fmt.Println(&s2[15], s2[15])
 	s2 = append(s2[:3], s2[4:]...)
+	fmt.Println(&s2[14], s2[14])
 	printSlice(s2)
 
 	front := s2[0]
@@ -35,6 +36,10 @@ func main() {
 	s2 = s2[:len(s2)-1]
 	printSlice(s2)
 	println(tail)
+
+	c1 := []int{0, 1, 2, 3}
+	c1 = append(c1, 4, 5, 6, 7, 8)
+	printSlice(c1)
 }
 
 func printSlice(s []int) {

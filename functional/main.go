@@ -1,6 +1,6 @@
 package main
 
-import "learn-go/functional/fib"
+import "ruo-xi/learn-go/functional/fib"
 
 func main() {
 	f := fib.Fibonacci()
@@ -8,5 +8,4 @@ func main() {
 	//	println(f())
 	//}
 	fib.PrintFileContents(f)
-
 }

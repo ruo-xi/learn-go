@@ -13,14 +13,14 @@ import "fmt"
 
 func main() {
 	arr := [...]int{0, 1, 2, 3, 4, 5, 6, 7}
-	fmt.Println("arr[2:6] =", arr[2:6])
+	fmt.Println("arr[2:6] =", arr[2:6], cap(arr[2:6]))
 	fmt.Println("arr[2:6] =", arr[:6])
 	s1 := arr[2:]
 	updateSlice(s1)
-	fmt.Println("arr[2:6] =", s1)
+	fmt.Println("arr[2:6] =", arr[2:6])
 	s2 := arr[:]
 	updateSlice(s2)
-	fmt.Println("arr[2:6] =", s2)
+	fmt.Println("arr[:6] =", arr[:6])
 	fmt.Println(arr)
 
 	arr[0], arr[2] = 0, 2
@@ -28,7 +28,7 @@ func main() {
 	s1 = arr[2:6]
 	fmt.Println(s1)
 	s2 = s1[3:5]
-	fmt.Println(s1, len(s2), cap(s2))
+	fmt.Println(s2, len(s2), cap(s2))
 	fmt.Println(s2[0:3])
 
 	//超过cap长度后 会重新创建一个
@@ -38,7 +38,6 @@ func main() {
 	//s4 s5 不再以arr为视图
 	fmt.Println(s3, s4, s5)
 	fmt.Println(arr)
-
 }
 
 func updateSlice(s []int) {

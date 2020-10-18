@@ -26,7 +26,7 @@ func chanDemo() {
 	time.Sleep(time.Millisecond)
 }
 
-func worker(id int, c chan int) {
+func worker(id int, c <-chan int) {
 	//for true {
 	//	n, ok := <-c
 	//	if !ok {
@@ -66,14 +66,17 @@ func channelClose() {
 	c <- 'a' + 2
 	c <- 'a' + 3
 	c <- 'a' + 4
-	close(c)
 	time.Sleep(time.Millisecond)
 }
 func main() {
 	fmt.Println("Channel as first-class citizen")
-	//chanDemo()
+	chanDemo()
+
+	time.Sleep(time.Second)
 	fmt.Println("Buffered channel")
-	//bufferedChannel()
+	bufferedChannel()
+
+	time.Sleep(time.Second)
 	fmt.Println("Channel close and range")
 	channelClose()
 }
