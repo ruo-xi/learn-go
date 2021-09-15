@@ -25,14 +25,15 @@ func main() {
 func HandleConn(conn net.Conn) {
 	defer conn.Close()
 	fmt.Println(conn.RemoteAddr())
-	bs := make([]byte, 1024)
+	bs := []byte
 	for {
 		n, err := conn.Read(bs)
 		if err != nil {
-			fmt.Println("err:", err)
+			fmt.Println(conn.RemoteAddr(), " --- err:", err)
 			return
 		}
-		fmt.Println("bytes: ", n)
+		conn.Write(bs)
+		fmt.Println(conn.RemoteAddr(), " --- bytes: ", n)
 		fmt.Println(string(bs[:n]))
 	}
 
